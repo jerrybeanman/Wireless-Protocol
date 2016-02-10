@@ -1,0 +1,42 @@
+Program starts on winmain function.
+Main dialog handle is constructed and shown.
+File opener structure is defined and constructed.
+	Structure contains flags limiting the file opener to only .txt files.
+	Structure is assigned a parent window, our dialog handle.
+	Structure also contains other information, such as general requirement flags.
+
+Winmain begins message listener loop.
+
+
+Wndproc : Message handler for our program.
+	Our window will be constructed with 2 text areas, one for input, one for output data.
+	As well as read file from computer button, a send button, priority heirachy checkbox, a recieved file chooser combobox, sending progress bar, statistics area, and a save read file button.
+		- Open button:
+			This button opens a file opener dialog which allows the user to select a file from their computer by easily browsing through the filesystem. (Upon triggering this button within WndProc, a new thread will be created, constructing the window.)
+		- Send Button
+			This button will send the loaded information on the left pane of the window (our loaded file), to recieving end.
+		- Save Button
+			This button will save the text on the right to a new file. This file will be specified by user input through a file opener dialog.
+		- Priority Heiarchy Checkbox
+			This checkbox will tell the reciever that it is requesting a higher priority over the transmission than the reciever. If they are both requesting higher priority, they will share the line.
+	The program's two text files also include the ability to see the sending and recieving files:
+		- Input text area
+			The input text area will display a blank area, which may be loaded with an existing file via the open button. The user also has the option to click on the field and edit it themselves.
+			Finally, the save button will allow the user to save the information currently within this window to a file the choose.
+		- Output text area
+			This field will allow the user to see a recieved file from their sender. This field will be read-only, and inheritly blank, until a user selected a succesfully downloaded file from the list of received files.
+		- Recieved File ComboBox
+			This ComboBox will be a list of all recieved files. When a user clicks on the combobox, it will display the loaded file into the output text area window.
+	Finally, information about the transmissions will also be displayed:
+		- Sending progress bar
+			The sending progress bar will display the progress on how much of the current file has been sent, and how much left there is to send.
+		- Statistics area
+			The statistics area will include several text fields which display information about the transmissions. The information will include:
+				- Sent packets
+				- Lost packets
+				- Recieved Packets
+				- Corrupted Packets Recieved
+				- Amount of ACK's sent and recieved
+				- Amount of NAK's sent and recieved
+				- Bit Error Rate
+	
